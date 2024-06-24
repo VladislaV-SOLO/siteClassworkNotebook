@@ -24,4 +24,79 @@
             font-size: $title-mobile;
         }
     }
+    &__field {
+        margin-bottom: 15px;
+        font-size: $text-large;
+        display: flex;
+        flex-direction: column;
+        &-label {
+            color: $label-color;
+            text-align: start;
+        }
+        &-input {
+            color: $input-color;
+            height: 50px;
+            width: 100%;
+            font-size: $text-large;
+            border: 1.5px solid $border-color;
+            border-radius: 15px;
+            padding: 0 10px;
+            @include respond-to('middle') {
+                font-size: $text-middle;
+                height: 40px;
+            }
+            @include respond-to('mobile') {
+                font-size: $text-mobile;
+                height: 35px;
+            }
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 4px 1px $label-color;
+                border: 1.5px solid $label-color;
+            }
+            &::placeholder {
+                color: $border-color;
+            }
+        }
+        @include respond-to('middle') {
+            font-size: $text-middle;
+        }
+        @include respond-to('mobile') {
+            font-size: $text-mobile;
+        }
+        &.invalid {
+            .form__field-label {
+                color: $invalid-color;
+            }
+            .form__field-input {
+                color: $invalid-color;
+                border: 1.5px solid $invalid-color;
+                box-shadow: 0 0 4px 1px $invalid-color;
+            }
+        }
+    }
+    &__btn {
+        background-color: $label-color;
+        color: $bg-color-white;
+        margin: 0 auto;
+    }
+    &__notice {
+        color: $border-color;
+        font-size: $text-large;
+        margin-top: 15px;
+        @include respond-to('middle') {
+            font-size: $text-middle;
+        }
+        @include respond-to('mobile') {
+            font-size: $text-mobile;
+        }
+    }
+    &__link {
+        color: $secondary-btn-color;
+        font-size: inherit;
+        text-decoration: none;
+        &:hover {
+            color: $invalid-color;
+        }
+    }
 }
