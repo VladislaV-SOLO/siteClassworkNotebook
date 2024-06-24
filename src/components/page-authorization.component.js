@@ -2,14 +2,18 @@ import { Component } from "../core/component.js";
 
 export class PageAuthorization extends Component {
     constructor(id) {
+        // прокидываем id в constructor родителя
         super(id)
 
     }
 
     init() {
+        // инициализируем формы
         this.signIn = new Component('sign-in')
         this.signUp = new Component('sign-up')
+            // получаем ссылки
         this.links = this.componet.querySelectorAll('.form__link')
+            // навешиваем слушатели событий
         this.links.forEach(link => {
             link.addEventListener('click', onChangeFormHandler.bind(this))
 
@@ -20,6 +24,7 @@ export class PageAuthorization extends Component {
 
 
 function onChangeFormHandler(event) {
+    // функция переключения форм с Sign-in на Sign-up и обратно
     event.preventDefault();
     if (event.target.classList.contains('link-in')) {
         this.signUp.hide();
