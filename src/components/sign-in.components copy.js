@@ -1,4 +1,6 @@
 import { Component } from "../core/component.js";
+import { Form } from "../core/form.js";
+import { Validator } from "../core/validator.js";
 
 export class SignInComponent extends Component {
     constructor(formId) {
@@ -6,38 +8,21 @@ export class SignInComponent extends Component {
     }
 
     init() {
-        console.log(this.componet);
+        this.componet.addEventListener('submit', onSubmitHandler.bind(this))
+        this.form = new Form(this.componet, {
+            name: [Validator.required],
+            password: [Validator.isPasswordValid],
+        })
 
-        this.componet.addEventListener('submit', onSubmitHandler)
     }
 }
 
-function required(str = '') {
-
-    return str && str.trim()
-
-}
 
 function onSubmitHandler(event) {
     event.preventDefault()
-    console.log(this.name.value);
-    console.log(this.password.value);
 
-
-    // true -> чтобы лог не выполнился 
-    if (!required(this.name.value)) {
-        console.log('ПОЛЕ USERNAME ОБЯЗАТЕЛЬНО');
-    }
-
-    if (!required(this.password.value)) {
-        console.log('ПОЛЕ PASSWORD ОБЯЗАТЕЛЬНО');
-
-    }
-
-
-
-
-    // нужно выводить в лог сообщение о том, что поле обязательно если данных не ввели
+    console.log(this.form.value());
+    console.log(this.form.isValid());
 
 
 
