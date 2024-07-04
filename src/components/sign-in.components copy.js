@@ -11,9 +11,12 @@ export class SignInComponent extends Component {
         this.componet.addEventListener('submit', onSubmitHandler.bind(this))
         this.form = new Form(this.componet, {
             name: [Validator.required],
-            password: [Validator.isPasswordValid],
+            password: [Validator.required],
         })
+    }
 
+    onHide() {
+        this.form.clear()
     }
 }
 
@@ -21,7 +24,6 @@ export class SignInComponent extends Component {
 function onSubmitHandler(event) {
     event.preventDefault()
 
-    console.log(this.form.value());
     console.log(this.form.isValid());
 
 

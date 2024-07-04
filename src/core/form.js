@@ -10,8 +10,6 @@ export class Form {
             value[field] = this.form[field].value
         })
 
-        console.log(this.controls);
-
         return value
     }
 
@@ -30,8 +28,8 @@ export class Form {
 
             isValid
                 ?
-                console.log(` Инпут под названием тега name - ${field} Валидно`) :
-                console.log(` Инпут под названием тега name - ${field} НЕ ВАЛИДНО!`)
+                clearNoticeError(this.form[field]) :
+                setNoticeError(this.form[field])
 
             isFormValid = isValid && isFormValid
 
@@ -40,4 +38,61 @@ export class Form {
         return isFormValid
     }
 
+    clear() {
+        Object.keys(this.controls).forEach(field => {
+            this.form[field].value = ''
+            clearNoticeError(this.form[field])
+        })
+    }
+
+}
+
+const requiredErrorText = 'Field is required'
+const emailErrorText = 'Field is required (at least: "@" symbol)'
+const passwordErrorText = 'Field is required (at least: 1 uppercase letter and 1 digit)'
+
+
+function setNoticeError(input) {
+    clearNoticeError(input)
+
+    input.parentElement.classList.add('invalid')
+
+    const fieldName = input.getAttribute('name')
+    if (fieldName === 'name') {
+        input.insertAdjacentHTML('afterend', setErrorText(requiredErrorText))
+    }
+
+    if (fieldName === 'email') {
+        input.insertAdjacentHTML('afterend', setErrorText(emailErrorText))
+    }
+
+    if (fieldName === 'password') {
+
+        console.log(input.dataset.signIn);
+
+        input.dataset.signIn === 'sign-in' ?
+            input.insertAdjacentHTML('afterend', setErrorText(requiredErrorText)) :
+            input.insertAdjacentHTML('afterend', setErrorText(passwordErrorText))
+    }
+
+}
+
+function clearNoticeError(input) {
+    // если ошибка есть то будем проводить очистку
+
+    if (input.nextElementSibling) {
+        if (input.closest('.form__field')) {
+            input.closest('.form__field').removeChild(input.nextElementSibling)
+            input.parentElement.classList.remove('invalid')
+
+        }
+        // input.closest('.form__field').classList.remove('invalid')
+        // console.log(input.closest('.form__field'));
+        // input.parentElement.classList.remove('invalid')
+    }
+
+}
+
+function setErrorText(text) {
+    return `<p class="form__field-warning">${text}</p>`
 }

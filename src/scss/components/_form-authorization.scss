@@ -1,4 +1,5 @@
 .form {
+    // .form-container
     &-container {
         padding: 10px 25px;
         max-width: 500px;
@@ -12,6 +13,7 @@
             max-width: 300px;
         }
     }
+    // .form__title
     &__title {
         color: $border-color;
         font-size: $title-large;
@@ -24,15 +26,18 @@
             font-size: $title-mobile;
         }
     }
+    // .form__field
     &__field {
         margin-bottom: 15px;
         font-size: $text-large;
         display: flex;
         flex-direction: column;
+        // .form__field-label
         &-label {
             color: $label-color;
             text-align: start;
         }
+        // .form__field-input
         &-input {
             color: $input-color;
             height: 50px;
@@ -64,6 +69,7 @@
         @include respond-to('mobile') {
             font-size: $text-mobile;
         }
+        // .form__field.invalid
         &.invalid {
             .form__field-label {
                 color: $invalid-color;
@@ -72,6 +78,10 @@
                 color: $invalid-color;
                 border: 1.5px solid $invalid-color;
                 box-shadow: 0 0 4px 1px $invalid-color;
+            }
+            .form__field-warning {
+                color: $invalid-color;
+                font-size: $sub-text-mobile;
             }
         }
     }
