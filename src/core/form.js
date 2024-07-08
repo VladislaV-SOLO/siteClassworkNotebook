@@ -68,8 +68,6 @@ function setNoticeError(input) {
 
     if (fieldName === 'password') {
 
-        console.log(input.dataset.signIn);
-
         input.dataset.signIn === 'sign-in' ?
             input.insertAdjacentHTML('afterend', setErrorText(requiredErrorText)) :
             input.insertAdjacentHTML('afterend', setErrorText(passwordErrorText))
