@@ -2,15 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.min.css" />
     <title>Node</title>
 </head>
 
 <body>
-
-    <section class="page-authorization" id="login">
+    <section class="page-authorization hide" id="login">
         <div class="page-authorization-container">
             <form class="form hide" id="sign-up">
                 <div class="form-container">
@@ -18,24 +17,26 @@
 
                     <div class="form__field">
                         <label class="form__field-label">Username</label>
-                        <input class="form__field-input" type="text" name="name" placeholder="Type name...">
+                        <input class="form__field-input" type="text" name="name" placeholder="Type name..." />
                     </div>
 
                     <div class="form__field">
                         <label class="form__field-label">Email</label>
-                        <input class="form__field-input" type="text" name="email" placeholder="Type @email...">
+                        <input class="form__field-input" type="text" name="email" placeholder="Type @email..." />
                     </div>
 
                     <div class="form__field">
                         <label class="form__field-label">Password</label>
-                        <input class="form__field-input" type="text" data-sign-up="sign-up" name="password" placeholder="Type password...">
+                        <input class="form__field-input" type="text" data-sign-up="sign-up" name="password" placeholder="Type password..." />
                     </div>
 
                     <button class="form__btn btn">Accept</button>
                 </div>
-                <p class="form__notice">Already have an account? Try to <a class="form__link link-in" href="#">Sign-in!</a></p>
+                <p class="form__notice">
+                    Already have an account? Try to
+                    <a class="form__link link-in" href="#">Sign-in!</a>
+                </p>
             </form>
-
 
             <form class="form" id="sign-in">
                 <div class="form-container">
@@ -43,24 +44,116 @@
 
                     <div class="form__field">
                         <label class="form__field-label">Username</label>
-                        <input class="form__field-input" type="text" name="name" placeholder="Type name...">
+                        <input class="form__field-input" type="text" name="name" placeholder="Type name..." />
                     </div>
 
                     <div class="form__field">
                         <label class="form__field-label">Password</label>
-                        <input class="form__field-input" type="text" data-sign-in="sign-in" name="password" placeholder="Type password...">
+                        <input class="form__field-input" type="text" data-sign-in="sign-in" name="password" placeholder="Type password..." />
                     </div>
 
                     <button class="form__btn btn">Accept</button>
                 </div>
-                <p class="form__notice">Already have an account? Try to <a class="form__link link-up" href="#">Sign-up!</a></p>
+                <p class="form__notice">
+                    Already have an account? Try to
+                    <a class="form__link link-up" href="#">Sign-up!</a>
+                </p>
             </form>
         </div>
-
     </section>
 
-    <div id="notification" class="notification">
-        <span class="notification__text">Lorem ipsum dolor sit amet.</span>
+    <section class="application" id="page-content">
+        <header class="header" id="header">
+            <div class="header-contener">
+                <h1 class="header__title">Todo List Application</h1>
+                <button class="header__btn btn" id="header-btn">Logout</button>
+            </div>
+        </header>
+        <main class="application__content" id="main">
+            <h2 class="application__title">
+                Welcome,
+                <span class="application__title-name" id="welcome">Sveta</span>, here are ypur tasks
+            </h2>
+            <div class="application__controls">
+                <form class="application__form-search form-search" id="search">
+                    <div class="form-search__field">
+                        <input class="form-search__field-input" type="search" name="title" placeholder="Search by title..." />
+                    </div>
+                    <div class="form-search__field">
+                        <select class="form-search__field-select" name="status">
+                <option
+                  class="form-search__field-select-option"
+                  value="all"
+                  selected
+                >
+                  All
+                </option>
+                <option
+                  class="form-search__field-select-option"
+                  value="processing"
+                >
+                  In Processeing
+                </option>
+                <option class="form-search__field-select-option" value="done">
+                  Completed
+                </option>
+              </select>
+                    </div>
+                </form>
+                <div class="todos application__todos">
+                    <div class="todos-contaner">
+                        <div class="todos__item todos__item_done">
+                            <div class="todos__item-status"></div>
+                            <p class="todos__item-title">Some title</p>
+                            <div class="todos__item-edit"></div>
+                            <div class="todos__item-remove"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="application__theme theme">
+                    <div class="theme__field">
+                        <select class="theme__field-select" name="theme" id="theme">
+                <option
+                  class="theme__field-select-option"
+                  value="gray"
+                  selected
+                >
+                  Gray
+                </option>
+                <option
+                  class="theme__field-select-option"
+                  value="yellow"
+                  selected
+                >
+                  Yellow
+                </option>
+                <option class="theme__field-select-option" value="red" selected>
+                  Red
+                </option>
+              </select>
+                    </div>
+                </div>
+
+            </div>
+            <button class="btn application__btn" id="create-btn"></button>
+        </main>
+    </section>
+
+    <div id="edit" class="modal ">
+        <form class="modal-container">
+            <h2 class="modal__title">Edit</h2>
+            <div class="modal__field">
+                <input class="modal__field-input" type="text" name="title" placeholder="Title...">
+            </div>
+            <div class="modal__field">
+                <textarea class="modal__field-textarea" name="description" placeholder="Description...">
+            </div>
+            <button class="modal__btn btn" type="submit">Save</button>
+        </form>
+    </div>
+
+    <div id="notification" class="notification hide">
+        <span class="notification__text"></span>
     </div>
 
     <script type="module" src="./src/index.js"></script>

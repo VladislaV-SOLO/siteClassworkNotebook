@@ -1,0 +1,33 @@
+.header {
+    &-contener {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $bg-color;
+    }
+    &__title {
+        font-size: $title-large;
+        color: $border-color;
+        margin: 0 auto;
+        @include respond-to('middle') {
+            font-size: $title-middle;
+        }
+        @include respond-to('mobile') {
+            font-size: $title-mobile;
+        }
+    }
+    &__btn {
+        color: $input-color;
+        height: 50px;
+        border-radius: 20px;
+        font-size: $text-large;
+        background-color: $bg-color-white;
+        @include respond-to('middle') {
+            font-size: $text-middle;
+        }
+        @include respond-to('mobile') {
+            font-size: $text-mobile;
+        }
+    }
+}
