@@ -72,7 +72,7 @@
         <main class="application__content" id="main">
             <h2 class="application__title">
                 Welcome,
-                <span class="application__title-name" id="welcome">Sveta</span>, here are ypur tasks
+                <span class="application__title-name" id="welcome">Sveta</span>, here are your tasks
             </h2>
             <div class="application__controls">
                 <form class="application__form-search form-search" id="search">
@@ -80,7 +80,7 @@
                         <input class="form-search__field-input" type="search" name="title" placeholder="Search by title..." />
                     </div>
                     <div class="form-search__field">
-                        <select class="form-search__field-select" name="status">
+                        <select class="form-search__field-select" name="status">    
                 <option
                   class="form-search__field-select-option"
                   value="all"
@@ -101,13 +101,22 @@
                     </div>
                 </form>
                 <div class="todos application__todos">
-                    <div class="todos-contaner">
+                    <div class="todos-container">
                         <div class="todos__item todos__item_done">
+                            <div class="todos__item-status"></div>
+                            <p class="todos__item-title">Some title dwad a a daw dawd awd awd awd ad awd</p>
+                            <div class="todos__item-edit"></div>
+                            <div class="todos__item-remove"></div>
+                        </div>
+
+                        <div class="todos__item">
                             <div class="todos__item-status"></div>
                             <p class="todos__item-title">Some title</p>
                             <div class="todos__item-edit"></div>
                             <div class="todos__item-remove"></div>
                         </div>
+
+                        <p class="todos__notice">Nothing found</p>
                     </div>
                 </div>
                 <div class="application__theme theme">
@@ -139,14 +148,29 @@
         </main>
     </section>
 
-    <div id="edit" class="modal ">
+    <div id="create" class="modal hide">
+        <form class="modal-container">
+            <h2 class="modal__title">Add New</h2>
+            <div class="modal__field">
+                <input class="modal__field-input" type="text" name="title" placeholder="Title...">
+                <!-- <p class="form__field-warning">Field is required</p> -->
+            </div>
+            <div class="modal__field">
+                <textarea class="modal__field-textarea" name="description" placeholder="Description..."></textarea>
+            </div>
+            <button class="modal__btn btn" type="submit">Add</button>
+        </form>
+    </div>
+
+    <div id="edit" class="modal hide">
         <form class="modal-container">
             <h2 class="modal__title">Edit</h2>
             <div class="modal__field">
                 <input class="modal__field-input" type="text" name="title" placeholder="Title...">
+                <!-- <p class="form__field-warning">Field is required</p> -->
             </div>
             <div class="modal__field">
-                <textarea class="modal__field-textarea" name="description" placeholder="Description...">
+                <textarea class="modal__field-textarea" name="description" placeholder="Description..."></textarea>
             </div>
             <button class="modal__btn btn" type="submit">Save</button>
         </form>
