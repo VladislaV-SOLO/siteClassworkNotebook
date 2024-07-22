@@ -2,10 +2,12 @@ import { Component } from "../core/component.js";
 import { Form } from "../core/form.js";
 import { Storage } from "../core/storage.js";
 import { Validator } from "../core/validator.js";
+import { pageContent } from "../index.js";
 
 export class SignUpComponent extends Component {
-    constructor(formId) {
+    constructor(formId, page) {
         super(formId)
+        this.page = page
     }
 
     init() {
@@ -35,15 +37,18 @@ function onSubmitHandler(event) {
             ...this.form.value(),
 
         }
-        Storage.createNewUser(formData)
+        this.form.clear()
+        const userId = Storage.createNewUser(formData)
             // очищаем форму  после создания польщователя
-
-        // this.form.clear()
-
-
+        if (!userId) return
+        localStorage.setItem('selectedUserId', userId)
+        setTimeout(() => {
+            // скрываем страницу авторизации
+            this.page.classList.add('hide')
+                // расткрыть страницу списка дел
+            pageContent.show()
+        }, 2500)
     }
-
-
 
 
 }
