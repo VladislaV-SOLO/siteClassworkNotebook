@@ -35,7 +35,7 @@ function onSubmitHandler(event) {
         const formData = {
             id: new Date().getTime(),
             ...this.form.value(),
-
+            todoList: []
         }
         this.form.clear()
         const userId = Storage.createNewUser(formData)

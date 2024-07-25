@@ -42,6 +42,19 @@ export class Storage {
     static getUserData() {
         return findUserData()
     }
+
+    static createPost(postData) {
+        const existUsers = getAllUsersFromLocalStorage()
+        const currentUser = findUserData()
+        const updateUser = {
+            ...currentUser,
+            todoList: [...currentUser.todoList, postData]
+        }
+        const indexCurrentUser = existUsers.findIndex((user) => user.id === currentUser.id)
+        const updateUsersArray = [...existUsers.slice(0, indexCurrentUser), updateUser, ...existUsers.slice(indexCurrentUser + 1)]
+        localStorage.setItem('users', JSON.stringify(updateUsersArray))
+        notification.show('Post created')
+    }
 }
 
 function checkUserExist(userData) {
@@ -68,7 +81,6 @@ function getAllUsersFromLocalStorage() {
 
 function findUserData() {
     const userId = JSON.parse(localStorage.getItem('selectedUserId'))
-    console.log(userId);
     if (userId) {
         const users = getAllUsersFromLocalStorage()
         return users.find((user) => {

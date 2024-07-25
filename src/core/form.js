@@ -9,7 +9,6 @@ export class Form {
         Object.keys(this.controls).forEach((field) => {
             value[field] = this.form[field].value
         })
-
         return value
     }
 
@@ -21,7 +20,6 @@ export class Form {
             const validatorsFns = this.controls[field]
 
             let isValid = true
-
             validatorsFns.forEach((validator) => {
                 isValid = validator(this.form[field].value) && isValid
             })
@@ -58,7 +56,8 @@ function setNoticeError(input) {
     input.parentElement.classList.add('invalid')
 
     const fieldName = input.getAttribute('name')
-    if (fieldName === 'name') {
+
+    if (fieldName === 'name' || fieldName === 'title' || fieldName === 'description') {
         input.insertAdjacentHTML('afterend', setErrorText(requiredErrorText))
     }
 
@@ -77,12 +76,14 @@ function setNoticeError(input) {
 
 function clearNoticeError(input) {
     // если ошибка есть то будем проводить очистку
-
     if (input.nextElementSibling) {
         if (input.closest('.form__field')) {
             input.closest('.form__field').removeChild(input.nextElementSibling)
             input.parentElement.classList.remove('invalid')
-
+        }
+        if (input.closest('.modal__field')) {
+            input.closest('.modal__field').removeChild(input.nextElementSibling)
+            input.parentElement.classList.remove('invalid')
         }
         // input.closest('.form__field').classList.remove('invalid')
         // console.log(input.closest('.form__field'));
