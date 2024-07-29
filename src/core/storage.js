@@ -44,16 +44,28 @@ export class Storage {
     }
 
     static createPost(postData) {
-        const existUsers = getAllUsersFromLocalStorage()
         const currentUser = findUserData()
         const updateUser = {
             ...currentUser,
             todoList: [...currentUser.todoList, postData]
         }
-        const indexCurrentUser = existUsers.findIndex((user) => user.id === currentUser.id)
-        const updateUsersArray = [...existUsers.slice(0, indexCurrentUser), updateUser, ...existUsers.slice(indexCurrentUser + 1)]
-        localStorage.setItem('users', JSON.stringify(updateUsersArray))
+        updateLocalStorage(updateUser)
         notification.show('Post created')
+    }
+
+    static getPostInfo(todoId) {
+        const currentUser = findUserData()
+        return currentUser.todoList.find(item => Number(item.id) === Number(todoId))
+    }
+
+    static removeTodo(todoId) {
+        const currentUser = findUserData()
+        const updateUserPosts = currentUser.todoList.filter((todo) => Number(todo.id) !== Number(todoId))
+        const updateUser = {
+            ...currentUser,
+            todoList: updateUserPosts
+        }
+        updateLocalStorage(updateUser)
     }
 }
 
@@ -87,4 +99,12 @@ function findUserData() {
             return user.id === userId
         })
     }
+}
+
+function updateLocalStorage(updateUser) {
+    const existUsers = getAllUsersFromLocalStorage()
+    const currentUser = findUserData()
+    const indexCurrentUser = existUsers.findIndex((user) => user.id === currentUser.id)
+    const updateUsersArray = [...existUsers.slice(0, indexCurrentUser), updateUser, ...existUsers.slice(indexCurrentUser + 1)]
+    localStorage.setItem('users', JSON.stringify(updateUsersArray))
 }

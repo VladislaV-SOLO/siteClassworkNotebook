@@ -9,7 +9,7 @@ export const pageContent = new PageContent("page-content", loginPage);
 export const formCreatePostModal = new FormCreatePostModal("create");
 export const postInfoModal = new PostInfoModal("info");
 
-console.log(postInfoModal);
+console.log(pageContent);
 
 export const notification = new Notification("notification");
 

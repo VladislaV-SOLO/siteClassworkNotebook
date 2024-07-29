@@ -28,6 +28,11 @@
             max-height: 400px;
             font-size: $text-middle;
         }
+        &_info {
+            height: min-content;
+            gap: 25px;
+            overflow: auto;
+        }
     }
     &__title {
         color: $input-color;

@@ -3,6 +3,7 @@ import { Form } from "../../core/form.js";
 import { Storage } from "../../core/storage.js";
 import { Validator } from "../../core/validator.js";
 import { pageContent } from "../../index.js";
+import { renderPostInfo } from "../../template/render-post-info.js";
 
 export class PostInfoModal extends Component {
     constructor(id) {
@@ -10,7 +11,14 @@ export class PostInfoModal extends Component {
     }
 
     init() {
+        this.componet.addEventListener('click', onCloseModalHandler.bind(this))
 
+    }
+
+    onShow(todoId) {
+        this.componet.innerHTML = ''
+        const htmlInfo = renderPostInfo(todoId)
+        this.componet.insertAdjacentHTML('afterbegin', htmlInfo)
     }
 
     onHide() {
@@ -20,9 +28,10 @@ export class PostInfoModal extends Component {
 
 function onCloseModalHandler(e) {
     const { target } = e
-    // сокрытие модалки на клик оверлея
-    let isBg = target == this.componet
-    if (isBg) {
+    // сокрытие модалки на клик оверлея или btn
+    const okeyBtn = this.componet.querySelector('.modal__btn')
+    let isTargetToClose = target == this.componet || target == okeyBtn
+    if (isTargetToClose) {
         this.hide()
     }
 }
