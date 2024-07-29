@@ -7,10 +7,10 @@ export const renderPosts = () => {
     }
 
     const todosForRender = todoList.map((todo) => {
-        const style = todo.status === 'done' ? '_done' : ''
+        const style = todo.status === 'done' ? 'todos__item todos__item_done' : 'todos__item'
 
         return `
-            <div class="todos__item todos__item${style}">
+            <div class="${style}">
                 <div class="todos__item-status"></div>
                 <p class="todos__item-title">${todo.title}</p>
                 <div class="todos__item-edit"></div>
@@ -19,6 +19,5 @@ export const renderPosts = () => {
         `;
     }).join('');
 
-    console.log(todosForRender);
     return todosForRender
 };
