@@ -22,7 +22,7 @@ export class PostInfoModal extends Component {
     }
 
     onHide() {
-
+        this.componet.innerHTML = ''
     }
 }
 
