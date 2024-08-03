@@ -1,6 +1,6 @@
 import { Component } from "../core/component.js";
 import { Storage } from "../core/storage.js";
-import { confirmInfoModal, formCreatePostModal, formEditPostModal, postInfoModal } from "../index.js";
+import { confirmInfoModal, formCreatePostModal, formEditPostModal, postInfoModal } from "../index.js"; // statusDoneBg
 import { renderPosts } from "../template/render-posts.js";
 
 export class PageContent extends Component {
@@ -48,6 +48,7 @@ function onTodoHandler(e) {
     }
 
     if (e.target.classList.contains('todos__item-status')) {
+        // statusDoneBg.show(todoId)
         console.log('todos__item-status');
     }
     if (e.target.classList.contains('todos__item-edit')) {

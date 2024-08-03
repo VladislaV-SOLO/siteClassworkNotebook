@@ -40,5 +40,4 @@ function onCloseModalHandler(e) {
         this.hide()
         pageContent.show()
     }
-
 }

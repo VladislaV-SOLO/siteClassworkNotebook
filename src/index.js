@@ -5,6 +5,7 @@ import { FormCreatePostModal } from "./components/modals/create-form.component.j
 import { PostInfoModal } from "./components/modals/todo-info.components.js";
 import { ConfirmActionModal } from "./components/modals/confirm-action.component.js";
 import { FormEditPostModal } from "./components/modals/edit-form.comonent.js";
+// import { StatusDoneBg } from "./components/modals/status-done.js";
 
 const loginPage = new PageAuthorization("login");
 export const pageContent = new PageContent("page-content", loginPage);
@@ -12,6 +13,7 @@ export const formCreatePostModal = new FormCreatePostModal("create");
 export const postInfoModal = new PostInfoModal("info");
 export const confirmInfoModal = new ConfirmActionModal("confirm");
 export const formEditPostModal = new FormEditPostModal("edit");
+// export const statusDoneBg = new StatusDoneBg("done");
 
 
 
