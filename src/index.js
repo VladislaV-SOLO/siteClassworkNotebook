@@ -5,7 +5,8 @@ import { FormCreatePostModal } from "./components/modals/create-form.component.j
 import { PostInfoModal } from "./components/modals/todo-info.components.js";
 import { ConfirmActionModal } from "./components/modals/confirm-action.component.js";
 import { FormEditPostModal } from "./components/modals/edit-form.comonent.js";
-// import { StatusDoneBg } from "./components/modals/status-done.js";
+
+
 
 const loginPage = new PageAuthorization("login");
 export const pageContent = new PageContent("page-content", loginPage);
@@ -13,7 +14,6 @@ export const formCreatePostModal = new FormCreatePostModal("create");
 export const postInfoModal = new PostInfoModal("info");
 export const confirmInfoModal = new ConfirmActionModal("confirm");
 export const formEditPostModal = new FormEditPostModal("edit");
-// export const statusDoneBg = new StatusDoneBg("done");
 
 
 
@@ -25,6 +25,94 @@ if (JSON.parse(localStorage.getItem("selectedUserId"))) {
     loginPage.hide();
     pageContent.show();
 }
+
+
+
+
+
+
+
+/*
+const arr1 = ['opel', 'bmw', 'audi', 'mazda', 'nissan', 'mercedes']
+const str = 'bmw'
+const arr2 = ['bmw', 'mercedes']
+
+function foo1 (arr1, str) {
+    return arr1.filter((el)=>el !== str) // пройти по массиву и оставить всё кроме str = bmw
+}
+// console.log(foo1(arr1 , str)) // ['opel', 'audi', 'mazda', 'nissan', 'mercedes']
+
+
+
+function fooTemp (arr1, arr2) {
+    return arr1.filter((el) => {
+        return !arr2.find((item) => item === el) //! - нам даётне найденые значения сравнивая(arr2)
+    }) // ['opel', 'audi', 'mazda', 'nissan']
+}
+console.log(fooTemp(arr1, arr2));
+
+
+
+
+
+
+const forTestArr = [
+    {role: 'admin', status: 'online'},
+ {role: 'user', status: 'online'},
+  {role: 'user', status: 'offline'},
+   {role: 'admin', status: 'online'},
+   { name: "Vlad", age: "32" },
+   { name: "Sveta", age: "32" },
+   { name: "Anna", age: "32" },
+   { car: "BMV", age: "1990" },
+]
+
+// function fooTemp (arr, value) {
+//     return arr.find((el)=>el.name === value)
+// }
+// console.log(fooTemp(forTestArr, 'Vlad')); // { name: "Vlad", age: "32" },
+
+
+
+function filterByKey(key, arr) {
+  const result = arr.filter((el)=>{ // по каждому обьекту(итерация) проходит 
+    return  el.hasOwnProperty(key) // и hasOwnProperty считывает наши ключи(true, false)
+  })//key -- мы передаем ключ из массива forTestArr в функцию(role, name, car)
+  return result.length ? result : null
+}
+
+// console.log(filterByKey('role' , forTestArr))
+
+
+
+function filterByRole(role, arr) {
+    const result = arr.filter((el)=>{ //проходит по каждой строчке в массиве
+        return  el.role === role // сравниваем каждый объект role с заданным(role) в функции
+    })
+    return result.length ? result : null
+}
+
+// console.log(filterByRole('user' , forTestArr))
+
+
+function filterByStatus(status, arr) {
+    const result = arr.filter((el)=>{ //проходит по каждой строчке в массиве
+        return  el.status === status // сравниваем каждый объект status с заданным(role) в функции
+    })
+    return result.length ? result : null
+}
+
+// console.log(filterByStatus('online' , forTestArr))
+
+*/
+
+
+
+
+
+
+
+
 
 /*
 const wareStore = {

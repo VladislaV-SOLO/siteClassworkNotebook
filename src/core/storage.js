@@ -85,6 +85,17 @@ export class Storage {
         notification.show("Post changed");
 
     }
+
+    static updateTodoStatus(todoId) {
+        const currentUser = findUserData()
+        currentUser.todoList.forEach((post) =>{
+            if (Number(post.id) === Number(todoId)) {
+                post.status = post.status === 'done' ? 'processing' : 'done'
+            }
+        })
+        updateLocalStorage(currentUser);
+        // console.log(currentUser); // работает при клике на галочку(статус)
+    }
 }
 
 function checkUserExist(userData) {

@@ -39,7 +39,7 @@ function onSubmitPostHandler(e) {
         const formData = {
             id: new Date().getTime(),
             ...this.form.value(),
-            status: 'precossing'
+            status: 'processing'
         }
         Storage.createPost(formData)
             // скрываем модалку
