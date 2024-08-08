@@ -198,3 +198,21 @@ function createObject(kyesArray, valueArray) {
 console.log(createObject(keys, value))
 
 */
+
+// найти в массиве числа и сложить их
+// const num = [2, 'dwa', {}, null, false, 5, 1]
+
+// function sum(arr) {
+//     return arr.reduce((acc, item) => {
+//         if (typeof item === "number") {
+//            return  acc += item //acc = acc + item
+//         }
+//         return acc
+//     }, 0)
+// }
+// const sum2 = (arr) => arr.reduce((acc, item) => typeof item === "number" ? acc += item : acc, 0)
+
+
+// console.log(sum(num)) // 8
+// console.log(sum2(num)) // 8
+// console.log(sum3(num)) // можно решить с помощью .forEach()

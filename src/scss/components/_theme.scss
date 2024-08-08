@@ -16,3 +16,24 @@
         }
     }
 }
+
+.yellow {
+    .header-contener,
+    .todos__item {
+        background-color: yellow;
+    }
+}
+
+.red {
+    .header-contener,
+    .todos__item {
+        background-color: red;
+    }
+}
+
+.gray {
+    .header-contener,
+    .todos__item {
+        background-color: grey;
+    }
+}

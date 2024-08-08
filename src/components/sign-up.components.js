@@ -35,7 +35,8 @@ function onSubmitHandler(event) {
         const formData = {
             id: new Date().getTime(),
             ...this.form.value(),
-            todoList: []
+            todoList: [],
+            theme: 'gray',
         }
         this.form.clear()
         const userId = Storage.createNewUser(formData)
@@ -49,6 +50,4 @@ function onSubmitHandler(event) {
             pageContent.show()
         }, 2500)
     }
-
-
 }
