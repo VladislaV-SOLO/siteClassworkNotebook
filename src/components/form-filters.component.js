@@ -15,15 +15,15 @@ export class FormFiltersComponent extends Component {
         return this.filters
     }
 
-    init () {
+    init() {
         this.componet.addEventListener('input', onFilterHandler.bind(this))
     }
 
     clear() {
-        this.filters.title = ''
-        this.filters.status = 'all'
-        this.componet.title.value = ''
-        this.componet.status.value = 'all'
+        this.filters.title = '';
+        this.filters.status = 'all';
+        this.componet.title.value = '';
+        this.componet.status.value = 'all';
     }
 }
 

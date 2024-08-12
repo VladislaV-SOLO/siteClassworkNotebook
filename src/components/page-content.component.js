@@ -52,7 +52,11 @@ function onTodoHandler(e) {
     const todoId = this.dataset.todoId
 
     if (e.target.classList.contains('todos__item')) {
+        history.pushState(todoId, null, `${location.origin}/todos/${todoId}`)
         postInfoModal.show(todoId)
+    
+        // console.log(history);
+        // console.log(location);
     }
 
     if (e.target.classList.contains('todos__item-status')) {

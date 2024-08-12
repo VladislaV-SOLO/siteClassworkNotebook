@@ -15,6 +15,8 @@ export const postInfoModal = new PostInfoModal("info");
 export const confirmInfoModal = new ConfirmActionModal("confirm");
 export const formEditPostModal = new FormEditPostModal("edit");
 
+export const originUrl = window.location.href
+console.log(originUrl);
 
 
 console.log(formEditPostModal);
@@ -26,6 +28,12 @@ if (JSON.parse(localStorage.getItem("selectedUserId"))) {
     pageContent.show();
 }
 
+window.addEventListener('popstate', function(e) {
+    const userId = JSON.parse(localStorage.getItem('selectedUserId'))
+    if (e.state && userId) {
+        postInfoModal.show(e.state)
+    }
+})
 
 
 
@@ -216,3 +224,56 @@ console.log(createObject(keys, value))
 // console.log(sum(num)) // 8
 // console.log(sum2(num)) // 8
 // console.log(sum3(num)) // можно решить с помощью .forEach()
+
+
+
+// //////////////////////////////////////////////////////////////
+
+// const obj = {
+//     name: 'Vlad',
+//     age: 32,
+//     sayHi() {
+//         console.log('Hello', this.name);
+//     },
+//     empty: undefined,
+//     car: undefined
+// }
+
+// function transformData1(obj) {// замена значения undefined на 'пусто'
+//     const result = {}
+//     for (let key in obj) {
+//         if (obj[key] === undefined) {
+//             result[key] = 'пусто'
+//         } else {
+//             result[key] = obj[key]
+//         }
+//     }
+//     return result
+// }
+
+// function transformData2(obj) {
+//     const result = Object.keys(obj).reduce((acc, key) => {
+//         if (obj[key] === undefined) {
+//             acc[key] = 'пусто'
+//             return acc
+//         } else {
+//             acc[key] = obj[key]
+//             return acc
+//         }
+//     }, {})
+//     return result
+// }
+
+// function transformData3(obj) {
+//     const result = Object.entries(obj).map(([key, value]) => {
+//         if (value === undefined) {
+//             return [key, 'пусто']
+//         } else {
+//             return [key, value]
+//         }
+//     })
+//     return Object.fromEntries(result)
+// }
+// console.log(transformData1(obj)); // замена значения undefined на 'пусто' метод for(цикл)
+// console.log(transformData2(obj)); // замена значения undefined на 'пусто' метод reduce
+// console.log(transformData3(obj)); // замена значения undefined на 'пусто' метод Object.entries

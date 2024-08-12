@@ -2,36 +2,37 @@ import { Component } from "../core/component.js";
 import { Storage } from "../core/storage.js";
 
 export class ThemeComponent extends Component {
-    constructor(id, pageContent) {
+    constructor(id, pageConent) {
         super(id)
-        this.pageContent = pageContent
+        this.pageConent = pageConent
+        this.componet.addEventListener('change', onThemeHandler.bind(this))
     }
 
     init() {
-        if(Storage.getUserData()) {
+        if (Storage.getUserData()) {
             this.componet.value = Storage.getUserData().theme
         } else {
             this.componet.value = 'gray'
         }
-        this.componet.addEventListener('change', onThemeHandler.bind(this))
     }
 
     value() {
+        const { theme } = Storage.getUserData()
+        this.componet.value = theme
+        this.pageConent.classList.remove('grey', 'yellow', 'red')
         return this.componet.value
     }
 }
 
 function onThemeHandler(e) {
-    console.log(e.target.value);
     Storage.setTheme(e.target.value)
 
-    const classList = this.pageContent.classList
-    console.log(classList);
+    const classList = this.pageConent.classList
 
     Array.from(classList).forEach((cls) => {
         if (cls === 'application') return
-        this.pageContent.classList.remove(cls)
+        this.pageConent.classList.remove(cls)
     })
 
-    this.pageContent.classList.add(e.target.value)
+    this.pageConent.classList.add(e.target.value)
 }

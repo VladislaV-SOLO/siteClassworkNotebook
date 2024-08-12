@@ -2,7 +2,7 @@ import { Component } from "../../core/component.js";
 import { Form } from "../../core/form.js";
 import { Storage } from "../../core/storage.js";
 import { Validator } from "../../core/validator.js";
-import { pageContent } from "../../index.js";
+import { originUrl, pageContent } from "../../index.js";
 import { renderPostInfo } from "../../template/render-post-info.js";
 
 export class PostInfoModal extends Component {
@@ -16,9 +16,11 @@ export class PostInfoModal extends Component {
     }
 
     onShow(todoId) {
-        this.componet.innerHTML = ''
-        const htmlInfo = renderPostInfo(todoId)
-        this.componet.insertAdjacentHTML('afterbegin', htmlInfo)
+        if (location.href.includes(todoId) && Storage.getPostInfo(todoId)) {
+            this.componet.innerHTML = ''
+            const htmlInfo = renderPostInfo(todoId)
+            this.componet.insertAdjacentHTML('afterbegin', htmlInfo)
+        }
     }
 
     onHide() {
@@ -32,6 +34,7 @@ function onCloseModalHandler(e) {
     const okeyBtn = this.componet.querySelector('.modal__btn')
     let isTargetToClose = target == this.componet || target == okeyBtn
     if (isTargetToClose) {
+        history.pushState(null, null, originUrl)
         this.hide()
     }
 }
